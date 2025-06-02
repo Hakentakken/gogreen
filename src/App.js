@@ -8,7 +8,7 @@ import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
+    <div style={{ backgroundColor: "#F5E6CC", minHeight: "100vh" }}>
       <Navbar />
       <Routes>
         <Route path="/register" element={<RegisterPage />} />
@@ -17,7 +17,7 @@ function App() {
         <Route path="/section/:section" element={<SectionPage />} />
         <Route path="/" element={<DashboardPage />} />
       </Routes>
-    </>
+    </div>
   );
 }
 
