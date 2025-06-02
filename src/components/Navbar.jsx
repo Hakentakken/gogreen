@@ -11,6 +11,7 @@ export default function Navbar() {
         <Link to="/login" className="text-white hover:underline mx-2">Login</Link>
         <Link to="/register" className="text-white hover:underline mx-2">Register</Link>
         <Link to="/dashboard" className="text-white hover:underline mx-2">Dashboard</Link>
+        <Link to="/account" className="text-white hover:underline mx-2">Account</Link>
       </div>
     </nav>
   );

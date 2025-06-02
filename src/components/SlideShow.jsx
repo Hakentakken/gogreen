@@ -30,7 +30,7 @@ const SlideShow = () => {
         height: "320px",
         margin: "10px auto",
         overflow: "hidden",
-        borderRadius: "0",
+        borderRadius: "10px",
         boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
         position: "relative",
         background: "#eee",
