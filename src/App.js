@@ -4,20 +4,26 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import SectionPage from "./pages/SectionPage";
+import AboutUs from "./pages/aboutus";
+import Footer from "./components/footer";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <Routes>
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/section/:section" element={<SectionPage />} />
-        <Route path="/" element={<DashboardPage />} />
-      </Routes>
-    </>
+      <div className="flex-1 flex flex-col">
+        <Routes>
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/section/:section" element={<SectionPage />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/" element={<DashboardPage />} />
+        </Routes>
+      </div>
+      <Footer />
+    </div>
   );
 }
 
