@@ -24,5 +24,5 @@ export default function LoginForm({ onLogin }) {
       {error && <div className="text-red-500">{error}</div>}
       <button className="w-full bg-blue-600 text-white p-2 rounded" type="submit">Login</button>
     </form>
-  );
+  );//comment
 }
