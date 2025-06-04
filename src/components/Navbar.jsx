@@ -13,6 +13,6 @@ export default function Navbar() {
         <Link to="/dashboard" className="text-white hover:underline mx-2">Dashboard</Link>
         <Link to="/account" className="text-white hover:underline mx-2">Account</Link>
       </div>
-    </nav>
+    </nav>//ashfakshjf
   );
 }
