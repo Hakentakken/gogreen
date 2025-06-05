@@ -6,6 +6,7 @@ import DashboardPage from "./pages/DashboardPage";
 import SectionPage from "./pages/SectionPage";
 import AboutUs from "./pages/aboutus";
 import Footer from "./components/footer";
+import ProfilePage from "./pages/ProfilePage"; // <-- Add this import
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/section/:section" element={<SectionPage />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/profile" element={<ProfilePage />} /> {/* Add this route */}
           <Route path="/" element={<DashboardPage />} />
         </Routes>
       </div>
