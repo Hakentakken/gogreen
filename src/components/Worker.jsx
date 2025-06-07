@@ -47,18 +47,18 @@ const Worker = () => {
   return (
     <div
       style={{
-        width: 370, // increased width
-        height: 300, // increased height
+        width: "100%",
+        maxWidth: 370,
+        minWidth: 220,
+        height: 300,
         overflow: "hidden",
         borderRadius: 16,
         border: "1px solid #38a169",
         background: "#f6fff8",
         boxShadow: "0 2px 12px rgba(56,161,105,0.08)",
-        position: "fixed",
-        top: 120,
-        right: 40,
-        zIndex: 1000,
+        margin: "0 auto",
       }}
+      className="w-full max-w-xs"
     >
       <div
         style={{
@@ -82,7 +82,7 @@ const Worker = () => {
           margin: 0,
           padding: 0,
           listStyle: "none",
-          height: "180px", // increased height for list
+          height: "180px",
           position: "relative",
         }}
       >
@@ -95,17 +95,17 @@ const Worker = () => {
               style={{
                 height: 45,
                 lineHeight: "45px",
-                padding: "0 24px",
+                padding: "0 16px",
                 borderBottom: "1px solid #e2e8f0",
                 color: "#22543d",
                 background: idx % 2 === 0 ? "#f0fff4" : "#f6fff8",
-                fontSize: 16,
+                fontSize: 15,
                 whiteSpace: "nowrap",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 display: "flex",
                 alignItems: "center",
-                gap: 0, // remove gap for tighter alignment
+                gap: 0,
               }}
             >
               {/* Avatar Circle */}
@@ -114,25 +114,25 @@ const Worker = () => {
                   display: "inline-flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  width: 32,
-                  height: 32,
+                  width: 28,
+                  height: 28,
                   borderRadius: "50%",
                   background: "#38a169",
                   color: "#fff",
                   fontWeight: "bold",
-                  fontSize: 16,
-                  marginRight: 12, // more space after avatar
+                  fontSize: 14,
+                  marginRight: 10,
                   flexShrink: 0,
                 }}
               >
                 {getInitials(name)}
               </span>
-              <span style={{ minWidth: 120, textAlign: "left" }}>{name}</span>
+              <span style={{ minWidth: 80, textAlign: "left" }}>{name}</span>
               {/* Show star symbol and numeric rating */}
-              <span style={{ marginLeft: 24, color: "#ECC94B", fontSize: 16, fontWeight: 500, minWidth: 60, textAlign: "left" }}>
+              <span style={{ marginLeft: 16, color: "#ECC94B", fontSize: 15, fontWeight: 500, minWidth: 40, textAlign: "left" }}>
                 ★ {rating}
               </span>
-              <span style={{ marginLeft: "auto", fontSize: 13, color: "#718096", minWidth: 70, textAlign: "right" }}>
+              <span style={{ marginLeft: "auto", fontSize: 12, color: "#718096", minWidth: 50, textAlign: "right" }}>
                 {idx % 3 === 0 ? "New" : "Reviewed"}
               </span>
             </li>

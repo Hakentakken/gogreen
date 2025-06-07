@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Searchbar from "../components/Searchbar";
-import Worker from "../components/Worker"; // <-- Import Worker
+import Worker from "../components/Worker";
+import Slideshow from "../components/Slideshow";
 
 const sections = [
 	{
@@ -36,41 +37,54 @@ const sections = [
 
 export default function DashboardPage() {
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 py-12 px-2">
+		<div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 py-12 px-2 relative">
 			<div className="mb-8">
 				<Searchbar />
 			</div>
-			{/* Flex row for Welcome and Worker */}
+			{/* Slideshow Component */}
+			<div className="mb-8">
+				<Slideshow />
+			</div>
 			<div className="flex flex-col md:flex-row items-center justify-center mb-10 gap-8">
 				<h1 className="text-3xl font-bold text-green-800 text-center animate-fade-in mb-6 md:mb-0">
 					Welcome to Your Dashboard
 				</h1>
-				<Worker />
 			</div>
-			<div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
-				{sections.map((section, idx) => (
-					<Link
-						key={section.to}
-						to={section.to}
-						className={`
-              ${section.bg} ${section.hover}
-              rounded-2xl shadow-lg flex flex-col items-center p-8
-              transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl group
-              focus:outline-none focus:ring-2 focus:ring-green-400
-              animate-slide-up
-            `}
-						style={{ animationDelay: `${idx * 0.1 + 0.2}s` }}
-					>
-						<img
-							src={section.img}
-							alt={section.label}
-							className="w-20 h-20 mb-4 group-hover:scale-110 transition-transform duration-300"
-						/>
-						<span className="text-xl font-semibold text-green-900 group-hover:text-green-700 transition-colors text-center">
-							{section.label}
-						</span>
-					</Link>
-				))}
+			{/* Flex row: cards left, Worker right */}
+			<div className="w-full flex flex-col lg:flex-row gap-8 items-start justify-start" style={{ marginLeft: 20 }}>
+				<div className="flex-1">
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+						{sections.map((section, idx) => (
+							<Link
+								key={section.to}
+								to={section.to}
+								className={`
+                                    ${section.bg} ${section.hover}
+                                    rounded-2xl shadow-lg flex flex-col items-center p-8
+                                    transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl group
+                                    focus:outline-none focus:ring-2 focus:ring-green-400
+                                    animate-slide-up
+                                `}
+								style={{ animationDelay: `${idx * 0.1 + 0.2}s` }}
+							>
+								<img
+									src={section.img}
+									alt={section.label}
+									className="w-20 h-20 mb-4 group-hover:scale-110 transition-transform duration-300"
+								/>
+								<span className="text-xl font-semibold text-green-900 group-hover:text-green-700 transition-colors text-center">
+									{section.label}
+								</span>
+							</Link>
+						))}
+					</div>
+				</div>
+				<div
+					className="w-full lg:w-[370px] flex-shrink-0 flex justify-center"
+					style={{ marginLeft: 0 , marginRight: 50 }} // Move cards left, increase gap to list
+				>
+					<Worker />
+				</div>
 			</div>
 			{/* Custom Animations */}
 			<style>
