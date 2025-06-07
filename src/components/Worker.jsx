@@ -47,18 +47,18 @@ const Worker = () => {
   return (
     <div
       style={{
-        width: "100%",
-        maxWidth: 370,
-        minWidth: 220,
-        height: 300,
+        width: 370, // increased width
+        height: 300, // increased height
         overflow: "hidden",
         borderRadius: 16,
         border: "1px solid #38a169",
         background: "#f6fff8",
         boxShadow: "0 2px 12px rgba(56,161,105,0.08)",
-        margin: "0 auto",
+        position: "fixed",
+        top: 120,
+        right: 40,
+        zIndex: 1000,
       }}
-      className="w-full max-w-xs"
     >
       <div
         style={{
@@ -82,11 +82,12 @@ const Worker = () => {
           margin: 0,
           padding: 0,
           listStyle: "none",
-          height: "180px",
+          height: "180px", // increased height for list
           position: "relative",
         }}
       >
         {displayList.map((name, idx) => {
+          // Example: Generate a rating between 1.0 and 5.0
           const rating = (Math.round(((idx % 5) + 1 + (idx % 10) * 0.13) * 10) / 10).toFixed(1);
           return (
             <li
@@ -94,17 +95,17 @@ const Worker = () => {
               style={{
                 height: 45,
                 lineHeight: "45px",
-                padding: "0 16px",
+                padding: "0 24px",
                 borderBottom: "1px solid #e2e8f0",
                 color: "#22543d",
                 background: idx % 2 === 0 ? "#f0fff4" : "#f6fff8",
-                fontSize: 15,
+                fontSize: 16,
                 whiteSpace: "nowrap",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 display: "flex",
                 alignItems: "center",
-                gap: 0,
+                gap: 0, // remove gap for tighter alignment
               }}
             >
               {/* Avatar Circle */}
@@ -113,25 +114,25 @@ const Worker = () => {
                   display: "inline-flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  width: 28,
-                  height: 28,
+                  width: 32,
+                  height: 32,
                   borderRadius: "50%",
                   background: "#38a169",
                   color: "#fff",
                   fontWeight: "bold",
-                  fontSize: 14,
-                  marginRight: 10,
+                  fontSize: 16,
+                  marginRight: 12, // more space after avatar
                   flexShrink: 0,
                 }}
               >
                 {getInitials(name)}
               </span>
-              <span style={{ minWidth: 80, textAlign: "left" }}>{name}</span>
+              <span style={{ minWidth: 120, textAlign: "left" }}>{name}</span>
               {/* Show star symbol and numeric rating */}
-              <span style={{ marginLeft: 16, color: "#ECC94B", fontSize: 15, fontWeight: 500, minWidth: 40, textAlign: "left" }}>
+              <span style={{ marginLeft: 24, color: "#ECC94B", fontSize: 16, fontWeight: 500, minWidth: 60, textAlign: "left" }}>
                 ★ {rating}
               </span>
-              <span style={{ marginLeft: "auto", fontSize: 12, color: "#718096", minWidth: 50, textAlign: "right" }}>
+              <span style={{ marginLeft: "auto", fontSize: 13, color: "#718096", minWidth: 70, textAlign: "right" }}>
                 {idx % 3 === 0 ? "New" : "Reviewed"}
               </span>
             </li>

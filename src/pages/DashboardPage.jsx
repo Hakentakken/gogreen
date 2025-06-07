@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Searchbar from "../components/Searchbar";
-import Worker from "../components/Worker";
-import Slideshow from "../components/Slideshow";
+import Worker from "../components/Worker"; // <-- Import Worker
 
 const sections = [
 	{
@@ -37,20 +36,18 @@ const sections = [
 
 export default function DashboardPage() {
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 py-12 px-2 relative">
+		<div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 py-12 px-2">
 			<div className="mb-8">
 				<Searchbar />
 			</div>
-			{/* Slideshow Component */}
-			<div className="mb-8">
-				<Slideshow />
-			</div>
+			{/* Flex row for Welcome and Worker */}
 			<div className="flex flex-col md:flex-row items-center justify-center mb-10 gap-8">
 				<h1 className="text-3xl font-bold text-green-800 text-center animate-fade-in mb-6 md:mb-0">
 					Welcome to Your Dashboard
 				</h1>
+				<Worker />
 			</div>
-			<div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+			<div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
 				{sections.map((section, idx) => (
 					<Link
 						key={section.to}
@@ -74,14 +71,6 @@ export default function DashboardPage() {
 						</span>
 					</Link>
 				))}
-			</div>
-			{/* Worker list fixed at right with margin */}
-			<div className="hidden lg:block fixed" style={{ top: "60vh", right: 50, zIndex: 0 }}>
-				<Worker />
-			</div>
-			{/* Show Worker below grid on mobile/tablet */}
-			<div className="block lg:hidden col-span-full mt-8">
-				<Worker />
 			</div>
 			{/* Custom Animations */}
 			<style>
