@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaLeaf, FaUserCircle, FaSignInAlt, FaUserPlus, FaTachometerAlt, FaInfoCircle } from "react-icons/fa";
 
 const mockUser = {
   name: "Amit Sharma",
-  avatar: "", // put image url here if available, else will use initials
+  avatar: "", // Optional avatar image
 };
 
 const getInitials = (name) =>
@@ -17,25 +18,25 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="bg-blue-600 px-4 py-3 flex items-center justify-between shadow-md relative">
-      {/* Left: Logo */}
+    <nav className="bg-gradient-to-r from-green-700 to-green-500 px-4 py-3 flex items-center justify-between shadow-lg relative z-50">
+      {/* Logo & Brand */}
       <Link to="/" className="text-white font-bold text-xl flex items-center gap-2">
         <img
           src="https://img.icons8.com/color/48/000000/tractor.png"
           alt="logo"
           className="w-8 h-8"
         />
-        Agri Marketplace
+        <span className="tracking-wide">Agri Marketplace</span>
       </Link>
 
-      {/* Center: Tagline */}
+      {/* Center Tagline */}
       <div className="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <span className="text-white font-semibold text-lg tracking-wide whitespace-nowrap italic">
-          Click. Cultivate. Conquer. With GreenGo
+        <span className="text-white font-semibold text-lg italic tracking-wider whitespace-nowrap">
+        
         </span>
       </div>
 
-      {/* Hamburger for mobile */}
+      {/* Mobile Toggle */}
       <button
         className="md:hidden text-white focus:outline-none"
         onClick={() => setOpen(!open)}
@@ -49,78 +50,51 @@ export default function Navbar() {
           )}
         </svg>
       </button>
-      {/* Nav links */}
+
+      {/* Links */}
       <div
-        className={`
-          flex-col md:flex-row md:flex items-center absolute md:static top-full left-0 w-full md:w-auto bg-blue-600 md:bg-transparent z-20
-          transition-all duration-300 ease-in-out
-          ${open ? "flex" : "hidden md:flex"}
+        className={`flex-col md:flex-row md:flex items-center absolute md:static top-full left-0 w-full md:w-auto bg-green-700 md:bg-transparent z-40 
+          transition-all duration-300 ease-in-out ${open ? "flex" : "hidden md:flex"}
         `}
       >
+        <NavLink icon={<FaInfoCircle />} to="/about" label="About Us" setOpen={setOpen} />
+        <NavLink icon={<FaSignInAlt />} to="/login" label="Login" setOpen={setOpen} />
+        <NavLink icon={<FaUserPlus />} to="/register" label="Register" setOpen={setOpen} />
+        <NavLink icon={<FaTachometerAlt />} to="/dashboard" label="Dashboard" setOpen={setOpen} />
+
+        {/* Profile */}
         <Link
-          to="/about"
-          className="text-green-100 hover:text-green-300 font-medium px-4 py-2 transition"
+          to="/profile"
+          className="flex items-center gap-2 md:ml-4 mt-2 md:mt-0 px-4 py-2 bg-green-900 hover:bg-green-800 text-white rounded-full transition duration-200"
           onClick={() => setOpen(false)}
         >
-          About Us
-        </Link>
-        <Link
-          to="/login"
-          className="text-white hover:text-blue-200 px-4 py-2 transition"
-          onClick={() => setOpen(false)}
-        >
-          Login
-        </Link>
-        <Link
-          to="/register"
-          className="text-white hover:text-blue-200 px-4 py-2 transition"
-          onClick={() => setOpen(false)}
-        >
-          Register
-        </Link>
-        <Link
-          to="/dashboard"
-          className="text-white hover:text-blue-200 px-4 py-2 transition"
-          onClick={() => setOpen(false)}
-        >
-          Dashboard
-        </Link>
-        <Link to="/profile" style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 8,
-          marginLeft: 16,
-          padding: "6px 16px",
-          background: "#38a169",
-          color: "#fff",
-          borderRadius: 8,
-          textDecoration: "none",
-          fontWeight: 500
-        }}>
-          <span
-            style={{
-              width: 28,
-              height: 28,
-              borderRadius: "50%",
-              background: "#276749",
-              color: "#fff",
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 15,
-              fontWeight: "bold",
-              marginRight: 6,
-              overflow: "hidden"
-            }}
-          >
-            {mockUser.avatar
-              ? <img src={mockUser.avatar} alt="profile" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "50%" }} />
-              : getInitials(mockUser.name)
-            }
-          </span>
-          Profile
+          <div className="w-8 h-8 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-sm overflow-hidden">
+            {mockUser.avatar ? (
+              <img
+                src={mockUser.avatar}
+                alt="profile"
+                className="w-full h-full object-cover rounded-full"
+              />
+            ) : (
+              getInitials(mockUser.name)
+            )}
+          </div>
+          <span className="hidden sm:inline-block">Profile</span>
         </Link>
       </div>
     </nav>
+  );
+}
+
+function NavLink({ icon, to, label, setOpen }) {
+  return (
+    <Link
+      to={to}
+      className="flex items-center gap-2 text-green-100 hover:text-yellow-200 font-medium px-4 py-2 transition duration-200"
+      onClick={() => setOpen(false)}
+    >
+      {icon}
+      <span>{label}</span>
+    </Link>
   );
 }
