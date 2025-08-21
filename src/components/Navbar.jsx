@@ -26,7 +26,7 @@ export default function Navbar() {
           alt="logo"
           className="w-8 h-8"
         />
-        <span className="tracking-wide">Agri Marketplace</span>
+        <span className="tracking-wide">Green Go</span>
       </Link>
 
       {/* Center Tagline */}
