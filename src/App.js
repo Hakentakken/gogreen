@@ -7,7 +7,6 @@ import SectionPage from "./pages/SectionPage";
 import AboutUs from "./pages/aboutus";
 import Footer from "./components/footer";
 import ProfilePage from "./pages/ProfilePage"; // <-- Add this import
-import Your_Field_Page from "./pages/Your_Field_Page"; // <-- Add this import
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
           <Route path="/section/:section" element={<SectionPage />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/profile" element={<ProfilePage />} /> {/* Add this route */}
-          <Route path="/section/your-field" element={<Your_Field_Page />} /> {/* <-- Add this route */}
           <Route path="/" element={<DashboardPage />} />
         </Routes>
       </div>
