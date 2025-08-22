@@ -33,6 +33,13 @@ const sections = [
 		img: "https://img.icons8.com/color/96/000000/seeds.png",
 		hover: "hover:bg-purple-200",
 	},
+	{
+		to: "/section/your-field",
+		label: "Your Field",
+		bg: "bg-pink-100",
+		img: "https://img.icons8.com/color/96/000000/landscape.png",
+		hover: "hover:bg-pink-200",
+	},
 ];
 
 export default function DashboardPage() {
